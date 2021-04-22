@@ -16,6 +16,6 @@ namespace caen
         uint32_t        TRIGGER_TIME_TAG;//absolute trigger time
     };
 
-    typedef uint16_t    SAMPLE_SIZE;
+    typedef float    SAMPLE_SIZE;
 }
 #endif
