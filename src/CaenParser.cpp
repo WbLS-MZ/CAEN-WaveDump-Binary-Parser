@@ -63,6 +63,24 @@ namespace caen
             }
             return false;
         }
+        catch( const std::exception& e )
+        {
+            //Double try to workaround an obscure bug in in libstdc++.
+            //https://stackoverflow.com/questions/40246459/exception-not-caught-opening-a-non-existing-file-using-c
+            //make sure that before reaching the EOF
+            //no data has been read
+            if( file.eof() and !file.gcount() )
+            {
+                PrintInfo( "EOF has been reached. All data has been read successfully." );
+            }
+            else
+            {
+                PrintWarning( "Couldn't open/read/close binary. Check if\n\t a) You forgot to set path to binary file or it is incorrect. Use `Parser::SetPathToFile` member function to set path to binary.\n\t b) Data block is corrupted.\nFailure occurred reading an event at:" );
+                PrintCurrentPosition();
+                std::cout << "Path to file: '" << pathToFile << "'" << std::endl; 
+            }
+            return false;
+        }
         return true;
     }
 
