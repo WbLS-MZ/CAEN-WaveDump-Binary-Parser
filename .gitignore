@@ -2,6 +2,9 @@
 /obj
 /lib
 /test
+/build
+/.vim
+
 /doc/users_guide.aux
 /doc/users_guide.toc
 /doc/users_guide.log

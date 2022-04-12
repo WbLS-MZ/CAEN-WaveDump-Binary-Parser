@@ -1,0 +1,20 @@
+######################################################################
+# @author      : Daniele Guffanti (daniele.guffanti@mib.infn.it)
+# @file        : WDBinaryParserConfig.cmake
+# @created     : lunedì apr 11, 2022 17:56:42 CEST
+######################################################################
+
+@PACKAGE_INIT@
+
+set_and_check(WDBinary_INCLUDE_DIR "@PACKAGE_WDBinary_INCLUDE_DIR@")
+set_and_check(WDBinary_LIB_DIR "@PACKAGE_WDBinary_LIB_DIR@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+include("@PACKAGE_WDBinary_INSTALL_CMAKE_DIR@/WDBinaryParserTargets.cmake")
+
+# These are IMPORTED targets created by WaveDeckTargets.cmake
+set(WDBinary_LIBRARIES caenparse)
+
+check_required_components(WDBinaryParser)
+
+
