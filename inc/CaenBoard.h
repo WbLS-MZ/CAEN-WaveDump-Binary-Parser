@@ -2,7 +2,7 @@
 #define CAEN_BOARD_H
 
 #include <string>
-
+#include <map>
 
 namespace caen
 {
